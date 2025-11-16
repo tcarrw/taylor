@@ -93,7 +93,6 @@
     margin-top:14px;
   }
 
-  /* Diagram */
   .diagram{
     background:var(--blueprint);
     border:1px solid rgba(217,183,255,0.35);
@@ -121,7 +120,6 @@
     border:1px solid rgba(255,255,255,0.15);
   }
 
-  /* Architect Notes (collapsible) */
   details{
     margin-top:14px;
     background:rgba(255,255,255,0.03);
@@ -137,7 +135,6 @@
   }
   details[open] summary{margin-bottom:12px;}
 
-  /* Interactive Fractal Viewer */
   #fractalPad{
     height:260px;
     background:black;
@@ -146,7 +143,6 @@
     border:1px solid rgba(255,255,255,0.18);
   }
 
-  /* Links */
   a{color:var(--lav);text-decoration:none;}
   a:hover{text-decoration:underline;}
 
@@ -157,7 +153,6 @@
     color:var(--muted);
   }
 
-  /* Anchor Chip Footer */
   .anchorchips{
     margin-top:24px;
     display:flex;
@@ -185,21 +180,19 @@
   <div class="chip">Structure · Lavender</div>
 </header>
 
-<!-- Videos -->
 <section>
   <h2>The Signal Sources</h2>
   <p>Taylor’s structural lens is defined by narrative architecture, recursive motifs, and emotional ordering.</p>
 
-  <!-- Video 1 -->
+  <!-- Video 1 (UNCHANGED) -->
   <iframe src="https://www.youtube.com/embed/OuFnpmGwg5k"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-  <!-- Video 2 -->
-  <iframe src="https://www.youtube.com/embed/np3QLrHJmRA"
+  <!-- Video 2 (UPDATED TO LAVENDER HAZE) -->
+  <iframe src="https://www.youtube.com/embed/h8DLofLM7No"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </section>
 
-<!-- Why Structure -->
 <section>
   <h2>Why Structure Exists</h2>
   <p>In Illumina, Structure prevents collapse. It defines:</p>
@@ -220,7 +213,6 @@
   </details>
 </section>
 
-<!-- Diagram -->
 <section>
   <h2>Structural Blueprint</h2>
   <div class="diagram">
@@ -233,11 +225,9 @@
     </div>
   </div>
 
-  <!-- Fractal Viewer -->
   <div id="fractalPad"></div>
 </section>
 
-<!-- Rules -->
 <section>
   <h2>Rules of the World</h2>
   <p>This section defines the governing laws of narrative construction:</p>
@@ -249,7 +239,6 @@
   </ul>
 </section>
 
-<!-- Connections -->
 <section>
   <h2>Connected Pages</h2>
   <ul>
@@ -283,7 +272,6 @@
 </div>
 
 <script>
-  // Simple fractal viewer (Mandelbrot) — lightweight
   const c = document.createElement("canvas");
   const pad = document.getElementById("fractalPad");
   pad.appendChild(c);
