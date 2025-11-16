@@ -1,239 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Taylor · Structure Lens</title>
-  <meta name="description" content="Taylor’s Structure Lens — the Illumina architectural framework that shapes narrative, ordering, and world logic." />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Taylor · Structure Lens (Architect Edition)</title>
+<meta name="description" content="Taylor’s full Illumina Structure Lens — blueprint grid, architecture rules, interactive fractals, dual videos, anchor interactions, and architect notes." />
 
-  <style>
-    :root{
-      --bg:#0c0a14;
-      --panel:#151222;
-      --ink:#efeaff;
-      --muted:#cbbcdd;
-      --rule:rgba(255,255,255,0.12);
+<style>
+  :root{
+    --bg:#0c0a14;
+    --panel:#151222;
+    --ink:#efeaff;
+    --muted:#cbbcdd;
+    --rule:rgba(255,255,255,0.12);
 
-      --lav:#d9b7ff;
-      --lav2:#b185ff;
-      --blueprint:rgba(217,183,255,0.14);
+    --lav:#d9b7ff;
+    --lav2:#b185ff;
+    --blueprint:rgba(217,183,255,0.14);
+    --bluegrid:rgba(217,183,255,0.05);
 
-      --maxw:900px;
-    }
+    --maxw:900px;
+  }
 
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--ink);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI";
-      -webkit-font-smoothing:antialiased;
-      background:
-        radial-gradient(1400px 900px at 70% -10%, rgba(145,115,255,0.18), transparent 60%),
-        linear-gradient(180deg,#0b0912,#0c0a14);
-    }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font:16px/1.6 ui-sans-serif,system-ui;
+    -webkit-font-smoothing:antialiased;
 
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
+    background:
+      radial-gradient(1300px 800px at 70% -10%, rgba(145,115,255,0.14), transparent 60%),
+      linear-gradient(180deg,#0b0912,#0c0a14);
+  }
 
-    header{text-align:center;margin-bottom:32px;}
+  /* Blueprint grid */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      linear-gradient(90deg,var(--bluegrid) 1px, transparent 1px),
+      linear-gradient(0deg,var(--bluegrid) 1px, transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none;
+    z-index:-1;
+  }
 
-    h1{
-      margin:0;
-      font-size:clamp(40px,7vw,70px);
-      font-weight:800;
-      background:linear-gradient(120deg,var(--lav),#ffffff);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      letter-spacing:1.2px;
-    }
-    .sub{color:var(--muted);margin-top:8px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:48px 20px 80px;}
 
-    /* Chip */
-    .chip{
-      margin-top:14px;
-      display:inline-block;
-      padding:6px 12px;
-      border-radius:12px;
-      font-size:14px;
-      font-weight:600;
-      background:var(--lav);
-      color:#1a0f2e;
-    }
+  header{text-align:center;margin-bottom:32px;}
+  h1{
+    margin:0;
+    font-size:clamp(40px,7vw,70px);
+    font-weight:800;
+    letter-spacing:1px;
+    background:linear-gradient(110deg,var(--lav),white);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .sub{color:var(--muted);margin-top:8px;}
 
-    section{
-      background:rgba(255,255,255,0.02);
-      border:1px solid var(--rule);
-      border-radius:18px;
-      padding:28px 22px;
-      margin:32px 0;
-    }
+  .chip{
+    margin-top:16px;
+    display:inline-block;
+    padding:7px 14px;
+    background:var(--lav);
+    color:#1a0f2e;
+    border-radius:12px;
+    font-size:14px;
+    font-weight:600;
+  }
 
-    h2{
-      margin:0 0 16px;
-      font-size:clamp(24px,3vw,30px);
-      font-weight:700;
-    }
-    p{margin:12px 0;}
+  section{
+    background:rgba(255,255,255,0.02);
+    border:1px solid var(--rule);
+    border-radius:18px;
+    padding:28px 22px;
+    margin:32px 0;
+  }
+  h2{
+    margin:0 0 16px;
+    font-size:clamp(24px,3vw,30px);
+  }
+  p{margin:12px 0;}
 
-    ul{margin:14px 0 0 22px;}
+  iframe{
+    width:100%;
+    aspect-ratio:16/9;
+    border:0;
+    border-radius:14px;
+    margin-top:14px;
+  }
 
-    /* Diagram block */
-    .diagram{
-      background:var(--blueprint);
-      border:1px solid rgba(217,183,255,0.35);
-      border-radius:16px;
-      padding:24px;
-      margin-top:20px;
-      backdrop-filter:blur(6px);
-    }
-    .d-title{
-      font-size:18px;
-      font-weight:700;
-      margin-bottom:10px;
-      color:var(--lav);
-    }
-    .d-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-      font-size:14px;
-      color:var(--ink);
-    }
-    .d-block{
-      padding:12px;
-      border:1px solid rgba(255,255,255,0.18);
-      border-radius:12px;
-      background:rgba(255,255,255,0.04);
-    }
+  /* Diagram */
+  .diagram{
+    background:var(--blueprint);
+    border:1px solid rgba(217,183,255,0.35);
+    padding:24px;
+    border-radius:16px;
+    margin-top:20px;
+    backdrop-filter:blur(6px);
+  }
+  .d-title{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:12px;
+    color:var(--lav);
+  }
+  .d-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    font-size:14px;
+  }
+  .d-block{
+    padding:12px;
+    background:rgba(255,255,255,0.05);
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.15);
+  }
 
-    iframe{
-      width:100%;
-      aspect-ratio:16/9;
-      border:0;
-      border-radius:14px;
-      margin-top:16px;
-    }
+  /* Architect Notes (collapsible) */
+  details{
+    margin-top:14px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:12px;
+    padding:16px;
+    cursor:pointer;
+  }
+  details summary{
+    font-weight:600;
+    color:var(--lav);
+    margin-bottom:8px;
+  }
+  details[open] summary{margin-bottom:12px;}
 
-    a{color:var(--lav);text-decoration:none;}
-    a:hover{text-decoration:underline;}
+  /* Interactive Fractal Viewer */
+  #fractalPad{
+    height:260px;
+    background:black;
+    border-radius:12px;
+    margin-top:20px;
+    border:1px solid rgba(255,255,255,0.18);
+  }
 
-    footer{
-      margin-top:40px;
-      text-align:center;
-      font-size:13px;
-      color:var(--muted);
-    }
-  </style>
+  /* Links */
+  a{color:var(--lav);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  footer{
+    text-align:center;
+    margin-top:40px;
+    font-size:13px;
+    color:var(--muted);
+  }
+
+  /* Anchor Chip Footer */
+  .anchorchips{
+    margin-top:24px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+  }
+  .achip{
+    padding:6px 12px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:600;
+    border:1px solid rgba(255,255,255,0.2);
+    background:rgba(255,255,255,0.06);
+  }
+</style>
 </head>
 
 <body>
 <div class="wrap">
 
-  <header>
-    <h1>Taylor</h1>
-    <div class="sub">The Structure Lens — Architecture in Illumina</div>
-    <div class="chip">Structure · Lavender · World-Building</div>
-  </header>
+<header>
+  <h1>Taylor</h1>
+  <div class="sub">Structure · Architecture · Lavender Blueprint Logic</div>
+  <div class="chip">Structure · Lavender</div>
+</header>
 
-  <!-- Video -->
-  <section>
-    <h2>The Foundation Signal</h2>
+<!-- Videos -->
+<section>
+  <h2>The Signal Sources</h2>
+  <p>Taylor’s structural lens is defined by narrative architecture, recursive motifs, and emotional ordering.</p>
+
+  <!-- Video 1 -->
+  <iframe src="https://www.youtube.com/embed/OuFnpmGwg5k"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+  <!-- Video 2 -->
+  <iframe src="https://www.youtube.com/embed/np3QLrHJmRA"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+
+<!-- Why Structure -->
+<section>
+  <h2>Why Structure Exists</h2>
+  <p>In Illumina, Structure prevents collapse. It defines:</p>
+  <ul>
+    <li>How meaning is ordered</li>
+    <li>How memory is layered</li>
+    <li>How emotional truth repeats cleanly</li>
+    <li>How worlds stay coherent</li>
+  </ul>
+
+  <details>
+    <summary>Architect Notes — Why Taylor Fits</summary>
     <p>
-      Taylor’s work demonstrates a uniquely stable narrative architecture:
-      emotional continuity, clean recursion, symbolic scaffolding, and
-      world-level thematic consistency.
+      Taylor is the only anchor whose catalog has <em>mathematically clean</em>
+      recursive architecture: mirror-songs, structural callbacks, symbolic layering,
+      temporal loops, and multi-scale thematic echoes.
     </p>
+  </details>
+</section>
 
-    <iframe
-      src="https://www.youtube.com/embed/OuFnpmGwg5k"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
-
-    <p>
-      In Illumina, Taylor anchors <strong>Structure</strong>.  
-      She defines how the world holds together — the rules, the flow, the
-      hierarchical coherence.
-    </p>
-  </section>
-
-  <!-- Why Structure Exists -->
-  <section>
-    <h2>Why the Structure Lens Exists</h2>
-    <p>
-      Physics defines relationships; interpretation defines meaning.  
-      Structure defines <em>how meaning is organized across time.</em>
-    </p>
-
-    <ul>
-      <li>How elements repeat</li>
-      <li>Which themes stay constant</li>
-      <li>Which patterns upgrade</li>
-      <li>How personal narrative stabilizes identity</li>
-    </ul>
-
-    <p>
-      Taylor’s lens protects the system from drift, collapse, or incoherence.
-    </p>
-  </section>
-
-  <!-- Diagram -->
-  <section>
-    <h2>Structural Diagram</h2>
-    <p>The architect’s blueprint for how Illumina arranges meaning across the system:</p>
-
-    <div class="diagram">
-      <div class="d-title">The Four Structural Pillars</div>
-
-      <div class="d-grid">
-        <div class="d-block"><strong>Continuity</strong><br>Threads that stay across cycles.</div>
-        <div class="d-block"><strong>Fractals</strong><br>Patterns repeating at multiple scales.</div>
-        <div class="d-block"><strong>Resonance</strong><br>What amplifies emotional or narrative charge.</div>
-        <div class="d-block"><strong>Constraint</strong><br>Rules that create meaning by limiting chaos.</div>
-      </div>
+<!-- Diagram -->
+<section>
+  <h2>Structural Blueprint</h2>
+  <div class="diagram">
+    <div class="d-title">The Four Pillars</div>
+    <div class="d-grid">
+      <div class="d-block"><strong>Continuity</strong><br>What remains across cycles.</div>
+      <div class="d-block"><strong>Fractals</strong><br>Patterns repeating at scale.</div>
+      <div class="d-block"><strong>Resonance</strong><br>Which motifs carry charge.</div>
+      <div class="d-block"><strong>Constraint</strong><br>Rules that create clarity.</div>
     </div>
+  </div>
 
-    <p>
-      Structure is not rigidity — it is <em>purposeful ordering of emotional and physical truth.</em>
-    </p>
-  </section>
+  <!-- Fractal Viewer -->
+  <div id="fractalPad"></div>
+</section>
 
-  <!-- Cross-Anchor Interaction -->
-  <section>
-    <h2>Cross-Anchor Interaction</h2>
-    <p>
-      Taylor’s Structure lens interacts unusually strongly with:
-    </p>
+<!-- Rules -->
+<section>
+  <h2>Rules of the World</h2>
+  <p>This section defines the governing laws of narrative construction:</p>
+  <ul>
+    <li>Every symbol must serve at least two layers</li>
+    <li>Every callback must tie to a memory event</li>
+    <li>No emotional beat can appear without consequence</li>
+    <li>Structure must remain symmetrical across arcs</li>
+  </ul>
+</section>
 
-    <ul>
-      <li><strong>Marina · Mirror</strong> — Reflection needs a frame</li>
-      <li><strong>Sigrid · Clarity</strong> — Precision needs architecture</li>
-      <li><strong>Dagny · Joy</strong> — Joy needs a place to land</li>
-      <li><strong>Monique · Pulse</strong> — Rhythm needs structure</li>
-    </ul>
+<!-- Connections -->
+<section>
+  <h2>Connected Pages</h2>
+  <ul>
+    <li><a href="https://obsessions.plnt.earth">Marina — Obsessions</a></li>
+    <li><a href="https://itgets.dark.plnt.earth">Sigrid — It Gets Dark</a></li>
+    <li><a href="https://earth.plnt.earth">Dagny — Earth Lens</a></li>
+    <li><a href="/map/">Illumina Map</a></li>
+    <li><a href="/interpretation/">Interpretation</a></li>
+    <li><a href="/charter/">Charter</a></li>
+    <li><a href="/time/">Φ Field</a></li>
+  </ul>
+</section>
 
-    <p>
-      In Time, structure and clarity are the two stabilizers that prevent collapse.
-    </p>
-  </section>
-
-  <!-- Connections -->
-  <section>
-    <h2>Connected Pages</h2>
-
-    <ul>
-      <li><a href="https://obsessions.plnt.earth">Marina — Obsessions</a></li>
-      <li><a href="https://itgets.dark.plnt.earth">Sigrid — It Gets Dark</a></li>
-      <li><a href="https://earth.plnt.earth">Earth — Dagny Lens</a></li>
-      <li><a href="/map/">Illumina Map</a></li>
-      <li><a href="/interpretation/">Interpretation Layer</a></li>
-      <li><a href="/charter/">Charter</a></li>
-      <li><a href="/time/">Φ Field</a></li>
-    </ul>
-  </section>
-
-  <footer>
-    © 2025 • Illumina System — Taylor Lens Page
-  </footer>
+<footer>
+  <div class="anchorchips">
+    <div class="achip">Marina · Mirror</div>
+    <div class="achip">Sigrid · Clarity</div>
+    <div class="achip">Greta · Earth</div>
+    <div class="achip">Dagny · Joy</div>
+    <div class="achip">Dua · Motion</div>
+    <div class="achip">Ariana · Voice</div>
+    <div class="achip">Sabrina · Warmth</div>
+    <div class="achip">Taylor · Structure</div>
+    <div class="achip">Monique · Pulse</div>
+    <div class="achip">Doechii · Alter.Fire</div>
+  </div>
+  <br>
+  © 2025 • Illumina System — Taylor Lens (Architect Edition)
+</footer>
 
 </div>
+
+<script>
+  // Simple fractal viewer (Mandelbrot) — lightweight
+  const c = document.createElement("canvas");
+  const pad = document.getElementById("fractalPad");
+  pad.appendChild(c);
+  c.width = pad.clientWidth;
+  c.height = pad.clientHeight;
+  const ctx = c.getContext("2d");
+
+  function draw(){
+    const w = c.width, h = c.height;
+    const img = ctx.createImageData(w,h);
+    for(let x=0;x<w;x++){
+      for(let y=0;y<h;y++){
+        let a = (x - w/2) / (w/4);
+        let b = (y - h/2) / (h/4);
+        let ca = a, cb = b;
+        let iter = 0;
+        while(iter < 40){
+          let aa = a*a - b*b;
+          let bb = 2*a*b;
+          a = aa + ca;
+          b = bb + cb;
+          if(a*a + b*b > 10) break;
+          iter++;
+        }
+        const i = (y*w + x)*4;
+        const shade = iter === 40 ? 0 : 255 - iter*6;
+        img.data[i] = shade;
+        img.data[i+1] = shade*0.8;
+        img.data[i+2] = 255;
+        img.data[i+3] = 255;
+      }
+    }
+    ctx.putImageData(img,0,0);
+  }
+
+  draw();
+</script>
+
 </body>
 </html>
